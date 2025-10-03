@@ -1,0 +1,23 @@
+# Dépendances
+node_modules/
+
+# Variables d'environnement (IMPORTANT : contient le token secret)
+.env
+
+# Fichiers de session WhatsApp Web
+.wwebjs_auth/
+.wwebjs_cache/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
