@@ -62,10 +62,28 @@ pm2 startup
 pm2 save
 ```
 
-### Option 2 : Services cloud gratuits
+### Option 2 : Render.com (gratuit, recommandé)
+
+1. **Créer un compte sur [Render.com](https://render.com)**
+
+2. **Pousser votre code sur GitHub** (voir instructions ci-dessous)
+
+3. **Créer un nouveau Web Service sur Render** :
+   - Connectez votre repository GitHub
+   - Build Command: `npm install`
+   - Start Command: `npm start`
+   - Type: Web Service (même pour un bot)
+   - Plan: Free
+
+4. **Configurer les variables d'environnement** :
+   - Dans Render Dashboard → Environment
+   - Ajouter : `TELEGRAM_BOT_TOKEN` = votre token
+
+5. **Déployer** : Render déploiera automatiquement à chaque push
+
+### Option 3 : Autres services cloud
 
 - **Railway.app** : Déploiement automatique depuis GitHub
-- **Render.com** : Service gratuit avec limitations
 - **Fly.io** : Hébergement gratuit pour petits projets
 
 ### Option 3 : Hébergement mutualisé (webhook requis)
@@ -84,6 +102,17 @@ Pour modifier les lieux, éditez la ligne 34 de `bot.js`.
 ⚠️ **Ne jamais commiter le fichier `.env` sur GitHub !**
 
 Le fichier `.gitignore` est configuré pour l'exclure automatiquement.
+
+## 🔗 Pousser sur GitHub
+
+```bash
+# Créer un nouveau repository sur GitHub (via l'interface web)
+# Puis exécuter :
+
+git remote add origin https://github.com/VOTRE_USERNAME/bot-snsm.git
+git branch -M main
+git push -u origin main
+```
 
 ## 📄 Licence
 
