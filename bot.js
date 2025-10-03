@@ -1,7 +1,33 @@
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
+const express = require('express');
 
 const token = process.env.TELEGRAM_BOT_TOKEN;
+const PORT = process.env.PORT || 3000;
+
+// Variables globales
+const enMer = new Map();
+const attenteLieu = new Map(); // Suivi des utilisateurs en attente d'un choix de lieu suite à /depart
+const LIEUX = ["Plage de Saint Cieux", "Plage de l'Islet"];
+
+// Serveur HTTP pour Render (health check)
+const app = express();
+app.get('/', (req, res) => {
+    res.send('🚤 Bot SNSM Telegram est en ligne !');
+});
+
+app.get('/health', (req, res) => {
+    res.json({ 
+        status: 'ok', 
+        bot: 'running',
+        enMer: enMer.size,
+        timestamp: new Date().toISOString()
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`🌐 Serveur HTTP démarré sur le port ${PORT}`);
+});
 
 const bot = new TelegramBot(token, {
     polling: {
@@ -28,11 +54,6 @@ const bot = new TelegramBot(token, {
         console.log('Erreur enregistrement commandes:', error.message);
     }
 })();
-
-const enMer = new Map();
-// Suivi des utilisateurs en attente d'un choix de lieu suite à /depart
-const attenteLieu = new Map(); // userId -> true
-const LIEUX = ["Plage de Saint Cieux", "Plage de l'Islet"];
 
 console.log('🚤 Bot SNSM Telegram démarré !');
 console.log('En attente de messages...\n');

@@ -72,7 +72,7 @@ pm2 save
    - Connectez votre repository GitHub
    - Build Command: `npm install`
    - Start Command: `npm start`
-   - Type: Web Service (même pour un bot)
+   - Type: **Web Service**
    - Plan: Free
 
 4. **Configurer les variables d'environnement** :
@@ -80,6 +80,8 @@ pm2 save
    - Ajouter : `TELEGRAM_BOT_TOKEN` = votre token
 
 5. **Déployer** : Render déploiera automatiquement à chaque push
+
+**Note** : Le bot inclut un serveur HTTP sur le port configuré par Render pour satisfaire les exigences de health check. Le bot Telegram fonctionne en mode polling en parallèle.
 
 ### Option 3 : Autres services cloud
 
