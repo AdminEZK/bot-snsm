@@ -1,0 +1,7 @@
+# Dépendances Python pour le bulletin météo/mer SNSM
+
+# Requêtes HTTP
+requests==2.31.0
+
+# Variables d'environnement
+python-dotenv==1.0.0
